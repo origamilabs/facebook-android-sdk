@@ -1,0 +1,37 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.4.2'
+    }
+}
+apply plugin: 'android-library'
+
+dependencies {
+    compile project(':libraries:Support')
+}
+
+android {
+    compileSdkVersion 17
+    buildToolsVersion "17"
+
+    defaultConfig {
+        minSdkVersion 8
+        targetSdkVersion 17
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'facebook/AndroidManifest.xml'
+            java.srcDirs = ['facebook/src']
+            resources.srcDirs = ['facebook/src']
+            aidl.srcDirs = ['facebook/src']
+            renderscript.srcDirs = ['facebook/src']
+            res.srcDirs = ['facebook/res']
+            assets.srcDirs = ['facebook/assets']
+        }
+
+        instrumentTest.setRoot('facebook/tests')
+    }
+}
