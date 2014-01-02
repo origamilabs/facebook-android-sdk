@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.5+'
+        classpath 'com.android.tools.build:gradle:0.7+'
     }
 }
 apply plugin: 'android-library'
@@ -33,5 +33,9 @@ android {
         }
 
         instrumentTest.setRoot('facebook/tests')
+    }
+    // This is important, it will run lint checks but won't abort build
+    lintOptions {
+        abortOnError false
     }
 }
